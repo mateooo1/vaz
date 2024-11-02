@@ -30,6 +30,8 @@
     "/postgres-data"
   ],
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.1.5",
     "@isaacs/express-prometheus-middleware": "^1.2.1",
     "@prisma/client": "^5.20.0",
     "@remix-run/css-bundle": "*",
@@ -38,9 +40,12 @@
     "@remix-run/react": "*",
     "bcryptjs": "^2.4.3",
     "chokidar": "^3.6.0",
+    "clsx": "^2.1.1",
     "compression": "^1.7.4",
     "cross-env": "^7.0.3",
     "express": "^4.21.0",
+    "framer-motion": "^11.11.11",
+    "heroicons": "^2.1.5",
     "isbot": "^5.1.17",
     "morgan": "^1.10.0",
     "prom-client": "^15.1.3",

@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'STKBureau Sans';
+  src: url('https://cdn.paperplane.workers.dev/fonts/STKBureau-SansBook.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  font-family: 'STKBureau Sans', sans-serif;
+}
+
+
+/*:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1; fix for Chrome
+  }
+  @supports (font-variation-settings: normal) {
+    :root { font-family: InterVariable, sans-serif; }
+  }
+  */
+
+
+::selection {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+::-moz-selection {
+  background-color: rgba(0, 0, 0, .1);
+}
