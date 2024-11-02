@@ -9,7 +9,8 @@ import {
   useRouteError,
 } from "@remix-run/react";
 import invariant from "tiny-invariant";
-import { Text } from '~/components/text';
+import { marked } from 'marked';
+import DOMPurify from 'isomorphic-dompurify'; // Use isomorphic-dompurify
 import { Button } from '~/components/button';
 import { Alert, AlertActions, AlertDescription, AlertTitle } from '~/components/alert';
 
@@ -49,11 +50,18 @@ export default function NoteDetailsPage() {
     setIsOpen(true);
   };
 
+  // Sanitize Markdown content safely
+  const sanitizedHTML = DOMPurify.sanitize(marked(data.note.body));
+
   return (
-    <div>
-      <h3 className="text-4xl font-serif">{data.note.title}</h3>
-      <Text className="py-6">{data.note.body}</Text>
+    <div className="p-4 prose prose-h1:text-3xl prose-h1:font-semibold">
+      <h3 className="text-4xl font-serif font-normal">{data.note.title}</h3>
+      <div 
+        className="py-6" 
+        dangerouslySetInnerHTML={{ __html: sanitizedHTML }} // Render sanitized HTML
+      />
       <hr className="my-4" />
+      <div className="mb-16">
       <Button type="button" color="red" onClick={handleDeleteClick}>
         Delete
       </Button>
@@ -73,6 +81,7 @@ export default function NoteDetailsPage() {
           </Form>
         </AlertActions>
       </Alert>
+      </div>
     </div>
   );
 }
@@ -81,16 +90,16 @@ export function ErrorBoundary() {
   const error = useRouteError();
 
   if (error instanceof Error) {
-    return <div>An unexpected error occurred: {error.message}</div>;
+    return <div className="text-red-600">An unexpected error occurred: {error.message}</div>;
   }
 
   if (!isRouteErrorResponse(error)) {
-    return <h1>Unknown Error</h1>;
+    return <h1 className="text-red-600">Unknown Error</h1>;
   }
 
   if (error.status === 404) {
-    return <div>Note not found</div>;
+    return <div className="text-red-600">Note not found</div>;
   }
 
-  return <div>An unexpected error occurred: {error.statusText}</div>;
+  return <div className="text-red-600">An unexpected error occurred: {error.statusText}</div>;
 }
