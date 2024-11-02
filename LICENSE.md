@@ -1,5 +1,6 @@
 MIT License
 
+Copyright (c) VAZ. 2024
 Copyright (c) Remix Software Inc. 2021
 Copyright (c) Shopify Inc. 2022-2023
 
