@@ -1,3 +1,4 @@
+import type { MetaFunction } from "@remix-run/node";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { Form, Link, NavLink, Outlet, useLoaderData } from "@remix-run/react";
@@ -7,6 +8,8 @@ import { requireUserId } from "~/session.server";
 import { useUser } from "~/utils";
 import { UserIcon } from '@heroicons/react/16/solid'
 import { Text } from "~/components/text";
+
+export const meta: MetaFunction = () => [{ title: "Notes" }];
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const userId = await requireUserId(request);
