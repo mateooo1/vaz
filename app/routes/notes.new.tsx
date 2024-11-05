@@ -7,7 +7,6 @@ import { Field, Label } from '~/components/fieldset'
 import { Textarea } from '~/components/textarea'
 import { Button } from '~/components/button'
 import { DocumentIcon } from '@heroicons/react/16/solid'
-
 import { createNote } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
 

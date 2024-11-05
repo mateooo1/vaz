@@ -24,23 +24,13 @@ export default function NotesPage() {
 
   const [isTooltipVisible, setTooltipVisible] = useState(false);
 
+/*
+ TO-DO -> Logout
+ */
+
+
   return (
     <div className="flex h-full min-h-screen flex-col">
-      <header className="flex items-center justify-between bg-slate-800 p-4 text-white">
-        <h1 className="text-3xl font-bold">
-          <Link to=".">header</Link>
-        </h1>
-        <p></p>
-        <Form action="/logout" method="post">
-          <button
-            type="submit"
-            className="rounded bg-slate-600 px-4 py-2 text-gray-100 hover:bg-gray-500 active:bg-gray-600"
-          >
-            Logout
-          </button>
-        </Form>
-      </header>
-
       <main className="flex h-full bg-white">
         <div className="h-full w-80 border-r bg-gray-50">
           <Link to="new" className="block p-4 text-xl text-gray-500">
@@ -117,14 +107,14 @@ export default function NotesPage() {
           <svg className="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
           </svg>
-          <span className="sr-only">Search</span>
+          <span className="sr-only" data-tooltip-id="search" data-tooltip-content="Search" >Search</span>
         </button>
 
         <button
           data-tip={user.email}
           className="inline-flex flex-col items-center justify-center p-4 hover:bg-gray-50 dark:hover:bg-gray-800"
         >
-          <UserIcon data-tooltip-id="user" data-tooltip-content="Hello world!" className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-500" />
+          <UserIcon data-tooltip-id="user" data-tooltip-content={user.email} className="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-500" />
           <span className="sr-only">Logout</span>
         </button>
       </div>
