@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <main className="min-h-screen flex items-center justify-center p-6">
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-lg w-full">
+      <div className="bg-white dark:bg-zinc-900 rounded-lg p-8 max-w-lg w-full">
         <OnboardingForm />
       </div>
     </main>

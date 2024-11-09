@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useRouteError, useLoaderData } from "@remix-run/react";
 import { useOptionalUser } from "~/utils";
+
 
 import {
   Links,
@@ -92,6 +94,14 @@ export default function App() {
   
   const data = useLoaderData<typeof loader>();
   const user = useOptionalUser();
+
+  useEffect(() => {
+    // Automatically apply dark mode based on system preference
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
   return (
     <html lang="en" className="h-full">
       <head>
@@ -106,7 +116,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
+      <body className="h-full bg-white dark:bg-zinc-900">
         
     <SidebarLayout
       navbar={
@@ -283,6 +293,7 @@ export default function App() {
         <Scripts />
         <LiveReload />
     </SidebarLayout>
+   
       </body>
     </html>
   );

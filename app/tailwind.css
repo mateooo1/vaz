@@ -39,3 +39,10 @@
 ::-moz-selection {
   background-color: rgba(0, 0, 0, .1);
 }
+
+
+html.dark {
+  /* Define dark mode styles */
+  background-color: #1a202c; /* Example background for dark mode */
+  color: #cbd5e0; /* Example text color for dark mode */
+}
