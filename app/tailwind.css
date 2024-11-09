@@ -9,10 +9,19 @@
   font-style: normal;
 }
 
-:root {
-  font-family: 'STKBureau Sans', sans-serif;
+@font-face {
+  font-family: "ABC Diatype";
+  src: url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.eot");
+  src: url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.svg#ABC Diatype")format("svg");
 }
 
+:root {
+  font-family: 'ABC Diatype', sans-serif;
+}
 
 /*:root {
     font-family: Inter, sans-serif;

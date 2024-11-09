@@ -31,8 +31,6 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <link rel="preconnect" href="https://rsms.me/" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -67,7 +65,6 @@ export function ErrorBoundary() {
         <title>Oh no!</title>
         <Meta />
         <Links />
-        <script src="https://cdn.tailwind.css.com"></script>
       </head>
       <body className="bg-gray-100"> {/* Apply Tailwind classes as needed */}
         <h1 className="text-2xl font-bold text-red-600">Something went wrong!</h1>
