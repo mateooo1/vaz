@@ -9,7 +9,6 @@ import { Tooltip } from 'react-tooltip'
 import { useUser } from "~/utils";
 import { UserIcon } from '@heroicons/react/16/solid'
 import { Text } from "~/components/text";
-import Nav from "~/components/Nav";
 
 export const meta: MetaFunction = () => [{ title: "Notes" }];
 
@@ -32,11 +31,12 @@ export default function NotesPage() {
 
   return (
     <div className="flex h-full min-h-screen flex-col">
-      <div className="p-3">
-      <Nav />
-      </div>
       <main className="flex h-full bg-white">
-        <div className="h-full w-80 border-r bg-gray-50">
+
+        <div className="flex-1 p-6">
+          <Outlet />
+        </div>
+    {/*    <div className="h-full w-80 border-r bg-gray-50">
           <Link to="new" className="block p-4 text-xl text-gray-500">
             <Text className="text-4xl">
             + New Note
@@ -65,11 +65,8 @@ export default function NotesPage() {
               ))}
             </ol>
           )}
-        </div>
+        </div>*/}
 
-        <div className="flex-1 p-6">
-          <Outlet />
-        </div>
       </main>
     </div>
   );

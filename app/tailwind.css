@@ -19,18 +19,17 @@
   url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.svg#ABC Diatype")format("svg");
 }
 
-:root {
-  font-family: 'ABC Diatype', sans-serif;
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('/fonts/geist.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
 }
 
-/*:root {
-    font-family: Inter, sans-serif;
-    font-feature-settings: 'liga' 1, 'calt' 1; fix for Chrome
-  }
-  @supports (font-variation-settings: normal) {
-    :root { font-family: InterVariable, sans-serif; }
-  }
-  */
+:root {
+  font-family: 'Geist Sans', sans-serif;
+}
+
 
 
 ::selection {
