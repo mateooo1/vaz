@@ -12,6 +12,7 @@ import invariant from "tiny-invariant";
 import { marked } from 'marked';
 import DOMPurify from 'isomorphic-dompurify'; // Use isomorphic-dompurify
 import { Button } from '~/components/button';
+import { Text } from '~/components/text';
 import { Alert, AlertActions, AlertDescription, AlertTitle } from '~/components/alert';
 
 import { deleteNote, getNote } from "~/models/note.server";
@@ -98,7 +99,7 @@ export function ErrorBoundary() {
   }
 
   if (error.status === 404) {
-    return <div className="text-red-600">Note not found</div>;
+    return <Text>Note not found</Text>;
   }
 
   return <div className="text-red-600">An unexpected error occurred: {error.statusText}</div>;

@@ -3,23 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'STKBureau Sans';
-  src: url('https://cdn.paperplane.workers.dev/fonts/STKBureau-SansBook.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "ABC Diatype";
-  src: url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.eot");
-  src: url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.eot?#iefix")format("embedded-opentype"),
-  url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.woff2")format("woff2"),
-  url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.woff")format("woff"),
-  url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.ttf")format("truetype"),
-  url("https://db.onlinewebfonts.com/t/f05bbbfac1257664fc69ba21f8451b57.svg#ABC Diatype")format("svg");
-}
-
-@font-face {
   font-family: 'Geist Sans';
   src: url('/fonts/geist.woff2') format('woff2');
   font-style: normal;
@@ -30,19 +13,21 @@
   font-family: 'Geist Sans', sans-serif;
 }
 
-
-
+/* Styling for text selection */
 ::selection {
-    background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 ::-moz-selection {
-  background-color: rgba(0, 0, 0, .1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Webkit browsers (Chrome, Safari, etc.) - Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
 
-html.dark {
-  /* Define dark mode styles */
-  background-color: #1a202c; /* Example background for dark mode */
-  color: #cbd5e0; /* Example text color for dark mode */
+/* Firefox - Hide scrollbar */
+* {
+  scrollbar-width: none;
 }
