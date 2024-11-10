@@ -426,7 +426,7 @@ export default function Index() {
             commodo do ea.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button color="white" href="#">
+            <Button>
               Get started
             </Button>
             <a href="#" className="text-sm font-semibold leading-6 text-white">
