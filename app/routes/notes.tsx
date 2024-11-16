@@ -19,16 +19,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 export default function NotesPage() {
-  const data = useLoaderData<typeof loader>();
-  const user = useUser();
-
-  const [isTooltipVisible, setTooltipVisible] = useState(false);
-
-/*
- TO-DO -> Logout
- */
-
-
+ 
   return (
     <div className="flex h-full min-h-screen flex-col">
       <main className="flex h-full bg-white">
@@ -36,38 +27,7 @@ export default function NotesPage() {
         <div className="flex-1 p-6">
           <Outlet />
         </div>
-    {/*    <div className="h-full w-80 border-r bg-gray-50">
-          <Link to="new" className="block p-4 text-xl text-gray-500">
-            <Text className="text-4xl">
-            + New Note
-            </Text>
-          </Link>
-
-          <hr />
-
-          {data.noteListItems.length === 0 ? (
-            <Text className="p-4">No notes yet</Text>
-          ) : (
-            <ol>
-              {data.noteListItems.map((note) => (
-                <li key={note.id}>
-                  <NavLink
-                    className={({ isActive }) =>
-                      `block border-b p-4 text-xl ${isActive ? "bg-white" : ""}`
-                    }
-                    to={note.id}
-                  >
-                    <Text>
-                      📝 {note.title}
-                      </Text>
-                  </NavLink>
-                </li>
-              ))}
-            </ol>
-          )}
-        </div>*/}
-
-      </main>
+     </main>
     </div>
   );
 }

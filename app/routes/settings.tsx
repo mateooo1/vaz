@@ -1,169 +1,455 @@
-'use client'
+import type { MetaFunction } from '@remix-run/node';
+import { PhotoIcon, UserCircleIcon, HomeIcon } from '@heroicons/react/24/solid'
+import { Field, Label, Description, Fieldset, Legend  } from '~/components/fieldset'
+import { Listbox, ListboxLabel, ListboxOption } from '~/components/listbox'
+import { Radio, RadioField, RadioGroup } from '~/components/radio'
+import { Checkbox, CheckboxField, CheckboxGroup } from '~/components/checkbox'
+import { Input } from '~/components/input'
+import { Textarea } from '~/components/textarea'
+import { Text } from '~/components/text'
+import { Button } from '~/components/button'
 
-import { useState } from 'react'
-import { Dialog, DialogPanel, Field, Label, Switch } from '@headlessui/react'
-import { Bars3Icon } from '@heroicons/react/20/solid'
-import {
-  BellIcon,
-  CreditCardIcon,
-  CubeIcon,
-  FingerPrintIcon,
-  UserCircleIcon,
-  UsersIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline'
-import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+export const meta: MetaFunction = () => {
+  return [
+      { title: 'Settings' },
+  ];
+};
 
-import { useOptionalUser } from "~/utils";
-
-export const meta: MetaFunction = () => [{ title: "Settings" }];
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+const pages = [
+  { name: 'Settings', href: '#', current: true },
+]
 
 export default function Settings() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [automaticTimezoneEnabled, setAutomaticTimezoneEnabled] = useState(true)
-
   return (
-    <>
-<div className="mx-auto max-w-7xl pt-0 mt-0 lg:flex lg:gap-x-16 lg:px-8">
-  <h1 className="sr-only">General Settings</h1>
-
-  <main className="px-4 py-16 sm:px-6 lg:flex-auto lg:px-0 lg:py-20">
-    <div className="mx-auto max-w-2xl space-y-16 sm:space-y-20 lg:mx-0 lg:max-w-none">
-      <div>
-              <h2 className="text-base font-semibold leading-7 text-gray-900">Profile</h2>
-              <p className="mt-1 text-sm leading-6 text-gray-500">
-                This information will be displayed publicly so be careful what you share.
-              </p>
-
-              <dl className="mt-6 space-y-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
-                <div className="pt-6 sm:flex">
-                  <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Full name</dt>
-                  <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                    <div className="text-gray-900">Tom Cook</div>
-                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Update
-                    </button>
-                  </dd>
-                </div>
-                <div className="pt-6 sm:flex">
-                  <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Email address</dt>
-                  <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                    <div className="text-gray-900">tom.cook@example.com</div>
-                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Update
-                    </button>
-                  </dd>
-                </div>
-                <div className="pt-6 sm:flex">
-                  <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Title</dt>
-                  <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                    <div className="text-gray-900">Human Resources Manager</div>
-                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Update
-                    </button>
-                  </dd>
-                </div>
-              </dl>
+    <form>
+          <nav aria-label="Breadcrumb" className="flex mb-8">
+      <ol role="list" className="flex items-center space-x-4">
+        <li>
+          <div>
+            <a href="#" className="text-gray-400 hover:text-gray-500">
+              <HomeIcon aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
+              <span className="sr-only">Home</span>
+            </a>
+          </div>
+        </li>
+        {pages.map((page) => (
+          <li key={page.name}>
+            <div className="flex items-center">
+              <svg
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+                className="h-5 w-5 flex-shrink-0 text-gray-300"
+              >
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+              </svg>
+              <a
+                href={page.href}
+                aria-current={page.current ? 'page' : undefined}
+                className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+              >
+                {page.name}
+              </a>
             </div>
+          </li>
+        ))}
+      </ol>
+    </nav>
+      <div className="space-y-12">
+        <div className="border-b border-gray-900/10 pb-12">
+          <h2 className="text-base/7 font-semibold text-gray-900">Profile</h2>
+          <p className="mt-1 text-sm/6 text-gray-600">
+            This information will be displayed publicly so be careful what you share.
+          </p>
 
-            <div>
-              <h2 className="text-base font-semibold leading-7 text-gray-900">Bank accounts</h2>
-              <p className="mt-1 text-sm leading-6 text-gray-500">Connect bank accounts to your account.</p>
-
-              <ul role="list" className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
-                <li className="flex justify-between gap-x-6 py-6">
-                  <div className="font-medium text-gray-900">TD Canada Trust</div>
-                  <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Update
-                  </button>
-                </li>
-                <li className="flex justify-between gap-x-6 py-6">
-                  <div className="font-medium text-gray-900">Royal Bank of Canada</div>
-                  <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Update
-                  </button>
-                </li>
-              </ul>
-
-              <div className="flex border-t border-gray-100 pt-6">
-                <button type="button" className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                  <span aria-hidden="true">+</span> Add another bank
-                </button>
+          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div className="sm:col-span-4">
+              <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
+                Username
+              </label>
+              <div className="mt-2">
+                <div className="flex">
+                  <Input
+                    id="username"
+                    name="username"
+                    type="text"
+                    placeholder="janesmith"
+                    autoComplete="username"
+                    className="max-w-40"
+                     />
+                </div>
               </div>
             </div>
 
-            <div>
-              <h2 className="text-base font-semibold leading-7 text-gray-900">Integrations</h2>
-              <p className="mt-1 text-sm leading-6 text-gray-500">Connect applications to your account.</p>
+            <div className="col-span-full">
+              <label htmlFor="about" className="block text-sm/6 font-medium text-gray-900">
+                About
+              </label>
+              <div className="mt-2">
+                <Textarea
+                  id="about"
+                  name="about"
+                  rows={3}
+                  defaultValue={''}
+                />
+              </div>
+              <p className="mt-3 text-sm/6 text-gray-600">Write a few sentences about yourself.</p>
+            </div>
 
-              <ul role="list" className="mt-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
-                <li className="flex justify-between gap-x-6 py-6">
-                  <div className="font-medium text-gray-900">QuickBooks</div>
-                  <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Update
-                  </button>
-                </li>
-              </ul>
-
-              <div className="flex border-t border-gray-100 pt-6">
-                <button type="button" className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                  <span aria-hidden="true">+</span> Add another application
-                </button>
+            <div className="col-span-full">
+              <label htmlFor="photo" className="block text-sm/6 font-medium text-gray-900">
+                Photo
+              </label>
+              <div className="mt-2 flex items-center gap-x-3">
+                <UserCircleIcon aria-hidden="true" className="h-12 w-12 text-gray-300" />
+                <Button
+                  type="button"
+                  color="white"
+                  >
+                  Change
+                </Button>
               </div>
             </div>
 
-            <div>
-              <h2 className="text-base font-semibold leading-7 text-gray-900">Language and dates</h2>
-              <p className="mt-1 text-sm leading-6 text-gray-500">
-                Choose what language and date format to use throughout your account.
-              </p>
-
-              <dl className="mt-6 space-y-6 divide-y divide-gray-100 border-t border-gray-200 text-sm leading-6">
-                <div className="pt-6 sm:flex">
-                  <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Language</dt>
-                  <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                    <div className="text-gray-900">English</div>
-                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Update
-                    </button>
-                  </dd>
-                </div>
-                <div className="pt-6 sm:flex">
-                  <dt className="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">Date format</dt>
-                  <dd className="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                    <div className="text-gray-900">DD-MM-YYYY</div>
-                    <button type="button" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Update
-                    </button>
-                  </dd>
-                </div>
-                <Field className="flex pt-6">
-                  <Label as="dt" passive className="flex-none pr-6 font-medium text-gray-900 sm:w-64">
-                    Automatic timezone
-                  </Label>
-                  <dd className="flex flex-auto items-center justify-end">
-                    <Switch
-                      checked={automaticTimezoneEnabled}
-                      onChange={setAutomaticTimezoneEnabled}
-                      className="group flex w-8 cursor-pointer rounded-full bg-gray-200 p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 data-[checked]:bg-indigo-600"
+            <div className="col-span-full">
+              <label htmlFor="cover-photo" className="block text-sm/6 font-medium text-gray-900">
+                Cover photo
+              </label>
+              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                <div className="text-center">
+                  <PhotoIcon aria-hidden="true" className="mx-auto h-12 w-12 text-gray-300" />
+                  <div className="mt-4 flex text-sm/6 text-gray-600">
+                    <label
+                      htmlFor="file-upload"
+                      className="relative cursor-pointer rounded-md bg-white font-semibold text-zinc-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-zinc-600 focus-within:ring-offset-2 hover:text-zinc-500"
                     >
-                      <span
-                        aria-hidden="true"
-                        className="h-4 w-4 transform rounded-full bg-white shadow-sm ring-1 ring-gray-900/5 transition duration-200 ease-in-out group-data-[checked]:translate-x-3.5"
-                      />
-                    </Switch>
-                  </dd>
-                </Field>
-              </dl>
+                      <span>Upload a file</span>
+                      <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                    </label>
+                    <p className="pl-1">or drag and drop</p>
+                  </div>
+                  <p className="text-xs/5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                </div>
+              </div>
             </div>
           </div>
-        </main>
+        </div>
+
+        <div className="border-b border-gray-900/10 pb-12">
+          <h2 className="text-base/7 font-semibold text-gray-900">Personal Information</h2>
+          <p className="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
+
+          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <div className="sm:col-span-3">
+              <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
+                First name
+              </label>
+              <div className="mt-2">
+                <Input
+                  id="first-name"
+                  name="first-name"
+                  type="text"
+                  autoComplete="given-name"
+                   />
+              </div>
+            </div>
+
+            <div className="sm:col-span-3">
+              <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-900">
+                Last name
+              </label>
+              <div className="mt-2">
+                <Input
+                  id="last-name"
+                  name="last-name"
+                  type="text"
+                  autoComplete="family-name"
+                  />
+              </div>
+            </div>
+
+            <div className="sm:col-span-4">
+              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                Email address
+              </label>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+
+            <div className="sm:col-span-3">
+              <Field>
+                <Label>Country</Label>
+                <Listbox name="country" placeholder="Select country" className="max-w-36">
+                  <ListboxOption value="US">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1fa-1f1f8.svg" alt="US Flag" width="24" className="inline mr-2" />
+                      United States
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="CA">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1e8-1f1e6.svg" alt="Canada Flag" width="24" className="inline mr-2" />
+                      Canada
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="GB">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1ec-1f1e7.svg" alt="UK Flag" width="24" className="inline mr-2" />
+                      United Kingdom
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="FR">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1eb-1f1f7.svg" alt="France Flag" width="24" className="inline mr-2" />
+                      France
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="DE">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1e9-1f1ea.svg" alt="Germany Flag" width="24" className="inline mr-2" />
+                      Germany
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="IN">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1ee-1f1f3.svg" alt="India Flag" width="24" className="inline mr-2" />
+                      India
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="BR">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1e7-1f1f7.svg" alt="Brazil Flag" width="24" className="inline mr-2" />
+                      Brazil
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="JP">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1ef-1f1f5.svg" alt="Japan Flag" width="24" className="inline mr-2" />
+                      Japan
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="AU">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1e6-1f1fa.svg" alt="Australia Flag" width="24" className="inline mr-2" />
+                      Australia
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="IT">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1ee-1f1f9.svg" alt="Italy Flag" width="24" className="inline mr-2" />
+                      Italy
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="MX">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1f2-1f1fd.svg" alt="Mexico Flag" width="24" className="inline mr-2" />
+                      Mexico
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="ES">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1ea-1f1f8.svg" alt="Spain Flag" width="24" className="inline mr-2" />
+                      Spain
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="CN">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1e8-1f1f3.svg" alt="China Flag" width="24" className="inline mr-2" />
+                      China
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="RU">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1f7-1f1fa.svg" alt="Russia Flag" width="24" className="inline mr-2" />
+                      Russia
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="ZA">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1ff-1f1e6.svg" alt="South Africa Flag" width="24" className="inline mr-2" />
+                      South Africa
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="AR">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1e6-1f1f7.svg" alt="Argentina Flag" width="24" className="inline mr-2" />
+                      Argentina
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="KR">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1f0-1f1f7.svg" alt="South Korea Flag" width="24" className="inline mr-2" />
+                      South Korea
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="NG">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1f3-1f1ec.svg" alt="Nigeria Flag" width="24" className="inline mr-2" />
+                      Nigeria
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="EG">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1ea-1f1ec.svg" alt="Egypt Flag" width="24" className="inline mr-2" />
+                      Egypt
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="SE">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1f8-1f1ea.svg" alt="Sweden Flag" width="24" className="inline mr-2" />
+                      Sweden
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="PK">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1f5-1f1f0.svg" alt="Pakistan Flag" width="24" className="inline mr-2" />
+                      Pakistan
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="PH">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1f5-1f1ed.svg" alt="Philippines Flag" width="24" className="inline mr-2" />
+                      Philippines
+                    </ListboxLabel>
+                  </ListboxOption>
+                  <ListboxOption value="KE">
+                    <ListboxLabel>
+                      <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.1.0/svg/1f1f0-1f1f7.svg" alt="Kenya Flag" width="24" className="inline mr-2" />
+                      Kenya
+                    </ListboxLabel>
+                  </ListboxOption>
+                </Listbox>
+              </Field>
+
+            </div>
+
+            <div className="col-span-full">
+              <label htmlFor="street-address" className="block text-sm/6 font-medium text-gray-900">
+                Street address
+              </label>
+              <div className="mt-2">
+                <Input
+                  id="street-address"
+                  name="street-address"
+                  type="text"
+                  autoComplete="street-address"
+                  />
+              </div>
+            </div>
+
+            <div className="sm:col-span-2 sm:col-start-1">
+              <label htmlFor="city" className="block text-sm/6 font-medium text-gray-900">
+                City
+              </label>
+              <div className="mt-2">
+                <Input
+                  id="city"
+                  name="city"
+                  type="text"
+                  autoComplete="address-level2"
+                  />
+              </div>
+            </div>
+
+            <div className="sm:col-span-2">
+              <label htmlFor="region" className="block text-sm/6 font-medium text-gray-900">
+                State / Province
+              </label>
+              <div className="mt-2">
+                <Input
+                  id="region"
+                  name="region"
+                  type="text"
+                  autoComplete="address-level1"
+                  />
+              </div>
+            </div>
+
+            <div className="sm:col-span-2">
+              <label htmlFor="postal-code" className="block text-sm/6 font-medium text-gray-900">
+                ZIP / Postal code
+              </label>
+              <div className="mt-2">
+                <Input
+                  id="postal-code"
+                  name="postal-code"
+                  type="text"
+                  autoComplete="postal-code"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-zinc-600 sm:text-sm/6"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-b border-gray-900/10 pb-12">
+          <h2 className="text-base/7 font-semibold text-gray-900">Notifications</h2>
+          <p className="mt-1 text-sm/6 text-gray-600">
+            We'll always let you know about important changes, but you pick what else you want to hear about.
+          </p>
+
+          <div className="mt-10 space-y-10">
+          <Fieldset>
+      <Legend>By email</Legend>
+      <Text>We'll always let you know about important changes, but
+      you pick what else you want to hear about.</Text>
+      <CheckboxGroup>
+        <CheckboxField>
+          <Checkbox name="email" value="comments" defaultChecked />
+          <Label>Comments</Label>
+          <Description>Get notified when someone posts a comment on your post.</Description>
+        </CheckboxField>
+        <CheckboxField>
+          <Checkbox name="discoverability" value="allow_embedding" />
+          <Label>Upvotes</Label>
+          <Description>Get notified when someone upvotes your post.</Description>
+        </CheckboxField>
+      </CheckboxGroup>
+    </Fieldset>
+            <div>
+      <Fieldset>
+      <Legend>Push notifications</Legend>
+      <Text>These are sent to your smartphone.</Text>
+      <RadioGroup name="resale" defaultValue="all">
+        <RadioField>
+          <Radio value="all" />
+          <Label>All notifications</Label>
+          <Description>Get notifications for everything.</Description>
+        </RadioField>
+        <RadioField>
+          <Radio value="only" />
+          <Label>Necessary only</Label>
+          <Description>Receive only critical updates.</Description>
+        </RadioField>
+        <RadioField>
+          <Radio value="optout" />
+          <Label>No notifications</Label>
+          <Description>Opt-out of notifications.</Description>
+        </RadioField>
+      </RadioGroup>
+    </Fieldset>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+
+      <div className="mt-6 flex items-center justify-end gap-x-6">
+        <Button type="button" plain>
+          Cancel
+        </Button>
+        <Button
+          type="submit"
+          >
+          Save
+        </Button>
+      </div>
+    </form>
   )
 }
