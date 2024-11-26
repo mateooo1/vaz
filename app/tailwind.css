@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/switzer');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +11,7 @@
 }
 
 :root {
-  font-family: 'Geist Sans', sans-serif;
+  font-family: 'Switzer', sans-serif;
 }
 
 /* Styling for text selection */
@@ -30,4 +31,15 @@
 /* Firefox - Hide scrollbar */
 * {
   scrollbar-width: none;
+}
+
+.box{
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+    text-align: center;
+    width: 150px;
+    left: 50%;
+    margin-left: -75px; /* half of the width */
+    background-color:red;
 }

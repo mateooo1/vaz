@@ -47,14 +47,14 @@ const activity = [
   {
     id: 4,
     type: 'assignment',
-    person: { name: 'Hilary Mahy', href: '#' },
+    person: { name: 'AutoMod', href: '#' },
     assigned: { name: 'Matt', href: '#' },
     date: '2d ago',
   },
   {
     id: 5,
     type: 'tags',
-    person: { name: 'Hilary Mahy', href: '#' },
+    person: { name: 'Matt', href: '#' },
     tags: [
       { name: 'React', href: '#', color: 'fill-blue-500' },
       { name: 'Performance', href: '#', color: 'fill-yellow-500' },
@@ -268,63 +268,6 @@ export default function Example() {
                   <PaperClipIcon aria-hidden="true" className="h-5 w-5" />
                   <span className="sr-only">Attach a file</span>
                 </button>
-              </div>
-              <div className="flex items-center">
-                <Listbox value={selected} onChange={setSelected}>
-                  <Label className="sr-only">Your mood</Label>
-                  <div className="relative">
-                    <ListboxButton className="relative -m-2.5 flex h-10 w-10 items-center justify-center rounded-full text-gray-400 hover:text-gray-500">
-                      <span className="flex items-center justify-center">
-                        {selected.value === null ? (
-                          <span>
-                            <FaceSmileIcon aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
-                            <span className="sr-only">Add your mood</span>
-                          </span>
-                        ) : (
-                          <span>
-                            <span
-                              className={classNames(
-                                selected.bgColor,
-                                'flex h-8 w-8 items-center justify-center rounded-full',
-                              )}
-                            >
-                              <selected.icon aria-hidden="true" className="h-5 w-5 flex-shrink-0 text-white" />
-                            </span>
-                            <span className="sr-only">{selected.name}</span>
-                          </span>
-                        )}
-                      </span>
-                    </ListboxButton>
-
-                    <ListboxOptions
-                      transition
-                      className="absolute bottom-10 z-10 -ml-6 w-60 rounded-lg bg-white py-3 text-base shadow ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:ml-auto sm:w-64 sm:text-sm"
-                    >
-                      {moods.map((mood) => (
-                        <ListboxOption
-                          key={mood.value}
-                          value={mood}
-                          className="relative cursor-default select-none bg-white px-3 py-2 data-[focus]:bg-gray-100"
-                        >
-                          <div className="flex items-center">
-                            <div
-                              className={classNames(
-                                mood.bgColor,
-                                'flex h-8 w-8 items-center justify-center rounded-full',
-                              )}
-                            >
-                              <mood.icon
-                                aria-hidden="true"
-                                className={classNames(mood.iconColor, 'h-5 w-5 flex-shrink-0')}
-                              />
-                            </div>
-                            <span className="ml-3 block truncate font-medium">{mood.name}</span>
-                          </div>
-                        </ListboxOption>
-                      ))}
-                    </ListboxOptions>
-                  </div>
-                </Listbox>
               </div>
             </div>
             <Button

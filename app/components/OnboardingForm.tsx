@@ -47,7 +47,7 @@ function OnboardingForm() {
       >
         <meta http-equiv="refresh" content="1;URL='/'" />
         <h1 className="text-3xl font-serif text-gray-800">Form Completed!</h1>
-        <p className="text-lg text-gray-600 mt-4 font-serif">
+        <p className="text-lg text-gray-600 mt-4">
           Thank you for filling out the form.<br />
           We will redirect you shortly to your dashboard.
         </p>
@@ -162,7 +162,7 @@ function OnboardingForm() {
           </Button>
         )}
         {step === 3 && (
-          <Button type="submit" color="green">
+          <Button type="submit" color="zinc">
             <PaperAirplaneIcon /> Submit
           </Button>
         )}
