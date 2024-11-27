@@ -56,11 +56,15 @@ export default function NoteDetailsPage() {
   const sanitizedHTML = DOMPurify.sanitize(marked(data.note.body));
 
   return (
-    <div className="p-4 prose prose-h1:text-3xl prose-h1:font-semibold">
+    <div className="p-4 prose prose-h1:text-4xl prose-h1:font-semibold">
       <div className="border-b border-gray-200 pb-5">
       <div className="sm:flex sm:items-baseline sm:justify-between">
         <div className="sm:w-0 sm:flex-1">
-          <h1 id="message-heading" className="text-base font-semibold leading-6 text-gray-900">
+            <h1
+              id="message-heading"
+              className="font-semibold leading-6 text-gray-900"
+              style={{ fontFamily: 'VC Nudge' }}
+            >
           {data.note.title}
           </h1>
           <p className="mt-1 truncate text-sm text-gray-500">Note description here.</p>

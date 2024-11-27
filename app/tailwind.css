@@ -1,13 +1,122 @@
-@import url('https://fonts.cdnfonts.com/css/switzer');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Geist Sans';
-  src: url('/fonts/geist.woff2') format('woff2');
+  font-family: 'Switzer';
   font-style: normal;
-  font-weight: 100 900;
+  font-weight: 400;
+  src: local('Switzer'), url('/fonts/Switzer-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Switzer'), url('/fonts/Switzer-Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Switzer'), url('/fonts/Switzer-Thin.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Switzer'), url('/fonts/Switzer-ThinItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Switzer'), url('/fonts/Switzer-Extralight.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 200;
+  src: local('Switzer'), url('/fonts/Switzer-ExtralightItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Switzer'), url('/fonts/Switzer-Light.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Switzer'), url('/fonts/Switzer-LightItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Switzer'), url('/fonts/Switzer-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Switzer'), url('/fonts/Switzer-MediumItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Switzer'), url('/fonts/Switzer-Semibold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Switzer'), url('/fonts/Switzer-SemiboldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Switzer'), url('/fonts/Switzer-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Switzer'), url('/fonts/Switzer-BoldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Switzer'), url('/fonts/Switzer-Extrabold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Switzer'), url('/fonts/Switzer-ExtraboldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Switzer'), url('/fonts/Switzer-Black.woff') format('woff');
+}
+@font-face {
+  font-family: 'Switzer';
+  font-style: italic;
+  font-weight: 900;
+  src: local('Switzer'), url('/fonts/Switzer-BlackItalic.woff') format('woff');
+}
+
+
+@font-face {
+  font-family: 'VC Nudge';
+  src: url('/fonts/VCNudge-Medium.woff') format('woff');
+  font-style: normal;
+  font-weight: bold;
 }
 
 :root {

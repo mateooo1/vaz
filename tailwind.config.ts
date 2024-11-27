@@ -6,6 +6,7 @@ export default {
     extend: {
       fontFamily: {
         serif: ["Instrument Serif", "serif"],
+        heading: ["VC Nudge", "sans"],
       },
     },
   },

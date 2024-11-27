@@ -138,7 +138,7 @@ export default function Index() {
             </div>
             <div className="relative px-4 pb-8 pt-16 sm:px-6 sm:pb-14 sm:pt-24 lg:px-8 lg:pb-20 lg:pt-32">
               <h1 className="text-center text-6xl tracking-tight sm:text-8xl lg:text-9xl">
-                <span className="text-white drop-shadow-md font-serif">
+                <span className="text-white drop-shadow-md font-heading">
                   Easy. Notes.
                 </span>
               </h1>
@@ -253,7 +253,7 @@ export default function Index() {
         <div className="bg-gray-50 py-24 sm:py-32">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-center text-base/7 font-semibold text-indigo-600">Deploy faster</h2>
-        <p className="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-serif tracking-tight text-gray-950 sm:text-5xl">
+        <p className="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-heading tracking-tight text-gray-950 sm:text-5xl">
           Everything you need to deploy your app
         </p>
         <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
@@ -357,7 +357,7 @@ export default function Index() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-base font-semibold leading-7 text-indigo-600">Everything you need</h2>
-          <p className="mt-2 text-3xl font-serif tracking-tight text-gray-900 sm:text-4xl">No storage? No problem.</p>
+          <p className="mt-2 text-3xl font-heading tracking-tight text-gray-900 sm:text-4xl">No storage? No problem.</p>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste
             dolor cupiditate blanditiis.
@@ -395,7 +395,7 @@ export default function Index() {
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-4xl font-serif tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-4xl font-heading tracking-tight text-gray-900 sm:text-4xl">
             We approach the workplace as something that adds to our lives and adds value to world.
           </h2>
           <p className="mt-6 text-base leading-7 text-gray-600">
@@ -438,7 +438,7 @@ export default function Index() {
     </div>
     <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
-          <h2 className="mx-auto max-w-2xl text-3xl font-serif tracking-tight text-white sm:text-4xl">
+          <h2 className="mx-auto max-w-2xl text-3xl font-heading tracking-tight text-white sm:text-4xl">
             Boost your productivity today.
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
