@@ -62,8 +62,7 @@ export default function NoteDetailsPage() {
         <div className="sm:w-0 sm:flex-1">
             <h1
               id="message-heading"
-              className="font-semibold leading-6 text-gray-900"
-              style={{ fontFamily: 'VC Nudge' }}
+              className="font-semibold font-heading leading-6 text-gray-900"
             >
           {data.note.title}
           </h1>

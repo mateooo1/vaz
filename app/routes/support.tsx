@@ -12,7 +12,7 @@ const faqs = [
     return (
       <div className="bg-white">
         <div className="mx-auto max-w-7xl divide-y divide-gray-900/10 px-6 py-24 sm:py-32 lg:px-8 lg:py-40">
-          <h2 className="text-4xl font-serif leading-10 tracking-tight text-gray-900">Knowledge base</h2>
+          <h2 className="text-4xl font-heading leading-10 tracking-tight text-gray-900">Knowledge base</h2>
           <dl className="mt-10 space-y-8 divide-y divide-gray-900/10">
             {faqs.map((faq) => (
               <div key={faq.id} className="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">

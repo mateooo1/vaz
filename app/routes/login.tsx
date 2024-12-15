@@ -87,7 +87,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-full flex-col justify-center">
       <div className="mx-auto w-full max-w-md px-8">
-      <h1 className="font-serif text-4xl text-black text-center mb-6">Log in</h1>
+      <h1 className="font-heading text-4xl text-black text-center mb-6">Sign in</h1>
         <Form method="post" className="space-y-6">
           <div>
             <label
@@ -145,7 +145,7 @@ export default function LoginPage() {
           <input type="hidden" name="redirectTo" value={redirectTo} />
           <div className="flex items-center justify-center">
             <Button type="submit">
-            Log in
+            Sign in
               </Button>
           </div>
           <div className="flex items-center justify-between">
@@ -153,7 +153,6 @@ export default function LoginPage() {
               <CheckboxField>
                 <Checkbox id="remember"
                   name="remember"
-                  type="checkbox"
                 />
                 <Label>Remember me</Label>
               </CheckboxField>
